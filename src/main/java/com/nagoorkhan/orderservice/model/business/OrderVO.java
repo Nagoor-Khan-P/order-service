@@ -13,9 +13,9 @@ import java.util.List;
 @Entity
 public class OrderVO {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long oid;
     private String orderNum;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<OrderLineItemsVO> orderLineItemVOS;
 }
