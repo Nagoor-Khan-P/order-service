@@ -20,8 +20,13 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<OrderResponseVO> createOrder(@RequestBody OrderRequestVO orderRequestVO) {
+    public ResponseEntity<OrderResponseVO> placeOrder(@RequestBody OrderRequestVO orderRequestVO) {
         OrderVO orderVO = orderRequestMapper.orderRequestVOToOrderVO(orderRequestVO);
         return ResponseEntity.ok(orderResponseMapper.orderVOToOrderResponseVO(orderService.createOrder(orderVO)));
+    }
+
+    @GetMapping("/{orderId}")
+    public ResponseEntity<OrderResponseVO> fetchOrder(@PathVariable("orderId") Long orderId) {
+        return ResponseEntity.ok(orderResponseMapper.orderVOToOrderResponseVO(orderService.fetchOrder(orderId)));
     }
 }

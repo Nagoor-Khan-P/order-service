@@ -10,6 +10,5 @@ import java.util.List;
 @Getter
 @Setter
 public class OrderRequestVO {
-    private String orderNum;
     private List<OrderLineItemsRequestVO> orderLineItems;
 }

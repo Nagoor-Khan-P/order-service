@@ -20,4 +20,9 @@ public class OrderService {
         return orderRepository.save(orderVO);
 
     }
+
+    public OrderVO fetchOrder(Long orderId) {
+        log.debug("In fetch order");
+        return orderRepository.findById(orderId).orElse(null);
+    }
 }
